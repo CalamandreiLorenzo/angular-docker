@@ -6,6 +6,8 @@ If you are checking this project on GitLab check also GitHub that is a mirror of
 But GitHub is used to deploy on DockerHub, using automated build.
 
 - [GitHub Repo - Angular Container](https://github.com/CalamandreiLorenzo/angular-docker)
+- [GitLab Repo - Angular Container](https://gitlab.com/lorenzocalamandrei/angular-docker)
+- [Docker Hub - Angular Container](https://hub.docker.com/r/lorenzocalamandrei/angular-container)
 
 ## Requirements
 
