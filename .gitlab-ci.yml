@@ -23,7 +23,7 @@ Build Base:
   stage: base
   script:
     - docker pull $BASE_IMAGE:latest || true
-    - docker build --target prod --tag $BASE_IMAGE:latest -f ./Dockerfile-base . --cache-from $BASE_IMAGE:latest
+    - docker build --tag $BASE_IMAGE:latest -f ./Dockerfile-base . --cache-from $BASE_IMAGE:latest
     - docker push $BASE_IMAGE:latest
   only:
     refs:
@@ -36,7 +36,7 @@ Build CI:
   stage: ci
   script:
     - docker pull $CI_IMAGE:latest || true
-    - docker build --target prod --tag $CI_IMAGE:latest -f ./Dockerfile-ci . --cache-from $CI_IMAGE:latest --build-arg BASE_IMAGE=$BASE_IMAGE:latest
+    - docker build --tag $CI_IMAGE:latest -f ./Dockerfile-ci . --cache-from $CI_IMAGE:latest --build-arg BASE_IMAGE=$BASE_IMAGE:latest
     - docker push $CI_IMAGE:latest
   only:
     refs:
@@ -49,7 +49,7 @@ Build Dev:
   stage: dev
   script:
     - docker pull $DEV_IMAGE:latest || true
-    - docker build --target prod --tag $DEV_IMAGE:latest -f ./Dockerfile-ci . --cache-from $DEV_IMAGE:latest --build-arg BASE_IMAGE=$CI_IMAGE:latest
+    - docker build --tag $DEV_IMAGE:latest -f ./Dockerfile-ci . --cache-from $DEV_IMAGE:latest --build-arg BASE_IMAGE=$CI_IMAGE:latest
     - docker push $DEV_IMAGE:latest
   only:
     refs:
