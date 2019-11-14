@@ -1,0 +1,20 @@
+# This Dockerfile will be builded on DockerHub automated build configuration to create:
+# - lorenzocalamandrei/angular-container:*.*.*-base
+# where *.*.* is the version of this Dockerfile
+# The version will be taken from the tag by git.
+
+FROM node:11.10
+
+LABEL mantainer="Lorenzo Calamandrei <nexcal.dev@gmail.com>"
+
+ARG PACKAGE_MANAGER=yarn
+
+# set working directory
+WORKDIR /var/www/html/
+RUN chown node:node .
+
+# install angular-cli
+RUN npm i -g @angular/cli
+
+# set defaultPackageManager as default package manager into the angular CLI
+RUN ng config -g cli.packageManager ${PACKAGE_MANAGER}
